@@ -1,0 +1,68 @@
+# chicken-game<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Куриная Ферма</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #70c5e8;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .card {
+      background: #8b5a2b;
+      padding: 20px;
+      border-radius: 16px;
+      width: 80%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    .btn {
+      background: #ff9600;
+      border: none;
+      padding: 12px 24px;
+      color: white;
+      font-weight: bold;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>🏚️ Курятник</h2>
+    <p style="font-size: 40px; margin: 15px 0;">🐔 🥚</p>
+    <p>Яиц на складе: <b id="eggs">0</b></p>
+  </div>
+
+  <button class="btn" onclick="collectEggs()">Собрать яйца</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Разворачивает окно на весь экран
+
+    let eggs = 0;
+    setInterval(() => {
+      eggs += 1;
+      document.getElementById('eggs').innerText = eggs;
+    }, 1000);
+
+    function collectEggs() {
+      alert(`Вы собрали ${eggs} яиц!`);
+      eggs = 0;
+      document.getElementById('eggs').innerText = eggs;
+    }
+  </script>
+</body>
+</html>
